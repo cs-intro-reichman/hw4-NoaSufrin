@@ -18,6 +18,22 @@ public class KeywordsDetector {
         detectAndPrint(sentences, keywords);
     }
 
+    public static String lowerCase(String str) {
+        // Replace the following statement with your code
+        String ans = "";
+        int i = 0;
+        while (i < str.length()) {
+            if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z') {
+                char ch = (char) (str.charAt(i) + 32); 
+                ans = ans + ch;
+            } else {
+                ans = ans + str.charAt(i);
+            }
+            i++;
+        }
+        return ans;
+    }
+
     public static boolean strEqual (String substring, String str2) {
         for (int i = 0; i < substring.length(); i++) {
             if (substring.charAt(i) != str2.charAt(i)) {
@@ -54,7 +70,7 @@ public class KeywordsDetector {
 
         for (int i = 0; i < sentences.length; i++) {
             for (int j = 0; j < keywords.length; j++) {
-                if (contains(sentences[i], keywords[j])) {
+                if (contains(lowerCase(sentences[i]), lowerCase(keywords[j]))) {
                     System.out.println(sentences[i]);
                 }
             }
